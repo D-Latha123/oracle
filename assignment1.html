@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Faculty Team - Department of XYZ</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f2f2f2;
+    }
+
+    header {
+      background-color: #004080;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    main {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      margin: 15px;
+      border-radius: 8px;
+      width: 250px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .card img {
+      width:300;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .card button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #004080;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .card button:hover {
+      background-color: #003060;
+    }
+
+    .contact-form {
+      margin: 40px auto;
+      padding: 20px;
+      max-width: 500px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .contact-form h2 {
+      text-align: center;
+    }
+
+    .contact-form label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .contact-form button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #004080;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .contact-form button:hover {
+      background-color: #003060;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Faculty Team - Department of PG Computer Science</h1>
+  </header>
+
+  <main>
+    <div class="card">
+      <img src="images\kitty.png" alt="Faculty 1" />
+      <h3>Dr. A. Geetha</h3>
+      <p>Computer Application</p>
+      <p>Area of specialization  is Face Recognition , 28 years of teaching experience.</p>
+      <button onclick="scrollToForm()">Contact</button>
+    </div>
+    <div class="card">
+      <img src="images\lathanew.png" alt="Faculty 2" />
+      <h3>Dr. D.Latha</h3>
+      <p>Computer Science</p>
+      <p>Researcher in CBIR, 31 years of teaching experience.</p>
+      <button onclick="scrollToForm()">Contact</button>
+    </div>
+    <div class="card">
+      <img src="images\nalini.png" alt="Faculty 3" />
+      <h3>Dr. K. nalini Sujantha Bel </h3>
+      <p>Computer Science</p>
+      <p>Focus on AI and Machine Learning, 15 years of teaching experience</p>
+      <button onclick="scrollToForm()">Contact</button>
+    </div>
+  </main>
+
+  <section class="contact-form" id="contactForm">
+    <h2>Contact a Faculty Member</h2>
+    <form id="form">
+      <label for="fullName">Full Name *</label>
+      <input type="text" id="fullName" name="fullName" required />
+
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="message">Message *</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <script>
+    // Scroll to form on contact button click
+    function scrollToForm() {
+      document.getElementById('contactForm').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Form validation
+    document.getElementById('form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      const name = document.getElementById('fullName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+
+      if (name === '' || email === '' || message === '') {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      if (emailPattern.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+
+      if (message.length < 20) {
+        alert('Message must be at least 20 characters.');
+        return;
+      }
+
+      alert('Message sent successfully!');
+      document.getElementById('form').reset(); // Clear form
+    });
+  </script>
+</body>
+</html>
